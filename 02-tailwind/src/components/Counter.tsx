@@ -1,29 +1,25 @@
 import React, { useState } from 'react'
+import { useCounter } from '../hooks/useCounter'
+import Button from './Button';
 
-export const Counter = () => {
-    const [counter, setCounter] = useState(10);
 
-    const increaseBy = (value: number) => {
-        setCounter(counter +
-            value
-        )
-    };
+const Counter = () => {
 
+    const [colorType, setColorType] = useState<"green" | "red" | "blue">("blue")
+    const { count, increment, decrement, reset } = useCounter();
     return (
-        <div className=''>
-            <h3 className='text-center mb-5'>El contador está en:
-                <small> {counter}</small>
-            </h3>
-            <div className='grid grid-cols-2 gap-x-8'>
-                <button onClick={() => increaseBy(1)}
-                    className="border-4 border-dashed border-sky-500 p-2 rounded-lg">
-                    Incrementa 1
-                </button>
-                <button onClick={() => increaseBy(-1)} 
-                    className="border-4 border-dashed border-sky-500 p-2 rounded-lg">
-                    Decrementa 1
-                </button>
+        <div>Counter
+            <h1 className='text-4xl font-bold text-center'>{count}</h1>
+            <div className="flex gap-4">
+                <button onClick={increment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"> Aumentar 1</button>
+                <button onClick={decrement} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"> Restar 1</button>
+                <button onClick={reset} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out "> Resetear</button>
+                <Button colorType={colorType} setColorType={setColorType} />
+
+
             </div>
         </div>
     )
 }
+
+export default Counter

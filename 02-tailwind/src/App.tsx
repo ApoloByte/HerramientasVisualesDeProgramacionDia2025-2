@@ -1,6 +1,7 @@
 import './App.css'
-import { Counter } from './components/Counter'
-import Pricing from './components/Pricing'
+import Button from './components/Button' 
+import  Counter  from './components/Counter'
+
 
 function App() {
 
@@ -9,7 +10,6 @@ function App() {
       <div className='flex flex-col justify-center items-center h-svh w-svw'>
         <h1 className='text-4xl mb-5'>Contador</h1>
         <Counter />
-        <Pricing />
       </div>
     </>
   )
